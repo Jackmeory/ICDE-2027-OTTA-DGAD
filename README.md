@@ -1,5 +1,5 @@
 # ICDE-2027-OTTA-DGAD
-# DP-DGAD: A Generalist Dynamic Graph Anomaly Detector with Dynamic Prototypes
+
 This repository is the official implementation of paper "Online Test-Time Adaptation for Generalizable
 Dynamic Graph Anomaly Detection"
 	
