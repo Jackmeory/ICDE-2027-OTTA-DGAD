@@ -2,7 +2,7 @@
 
 This repository is the official implementation of paper "Online Test-Time Adaptation for Generalizable
 Dynamic Graph Anomaly Detection"
-	
+	![](https://github.com/Jackmeory/ICDE-2027-OTTA-DGAD/model.pdf)
 
 ## Requirements
 To install requirements:
