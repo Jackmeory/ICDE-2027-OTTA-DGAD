@@ -1,23 +1,32 @@
-# ICDE-2027-OTTA-DGAD
+## Packages
 
-This repository is the official implementation of paper "Online Test-Time Adaptation for Generalizable
-Dynamic Graph Anomaly Detection"
-	![](https://github.com/Jackmeory/ICDE-2027-OTTA-DGAD/model.pdf)
+```bash
+python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+python -m pip install -r requirements.txt
+```
 
-## Requirements
-To install requirements:
-```Python
-pip install -r requirements.txt 
+## Training
+
+```bash
+python train.py \
+  --data-dir /path/to/data \
+  --source-datasets source_dataset_1 source_dataset_2 \
+  --train-fraction 0.5 \
+  --epochs 50 --batch-size 128 --learning-rate 0.001 \
+  --prototype-bank-fraction 0.1 --classification-weight 0.5 \
+  --output checkpoints/source.pt \
+  --device cuda:0 --seed 95540
 ```
-## Pretrain on source datasets
-To train OTTA-DGAD on source datasests, please run the following code
-```Python
-python train_source.py 
+
+## Testing
+
+```bash
+python test.py \
+  --data-dir /path/to/data \
+  --dataset tax51_full \
+  --checkpoint checkpoints/source.pt \
+  --stream-split full \
+  --chunk-size 128 --buffer-size 100 \
+  --output outputs/test \
+  --device cuda:0 --seed 95540
 ```
-## Update and test on target datasets
-To update OTTA-DGAD on target datasests, please run the following code
-```Python
-python infer_target.py 
-```
-## Additional Notes
-This code take reference from [GeneralDyG](https://github.com/YXNTU/GeneralDyG?tab=readme-ov-file), AAAI 2025; [ARC](https://github.com/yixinliu233/ARC?tab=readme-ov-file), NeurIPS 2024; [AnomalyGFM](https://github.com/mala-lab/anomalygfm), KDD 2025. We want to express our sincere thanks to above authors for their well structured open-source code!
